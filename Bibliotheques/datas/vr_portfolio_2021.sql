@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 03 avr. 2021 à 19:07
--- Version du serveur :  10.3.27-MariaDB
--- Version de PHP : 7.3.26
+-- Généré le : lun. 05 avr. 2021 à 08:56
+-- Version du serveur :  8.0.22
+-- Version de PHP : 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `bxjurhjn_portfolio_vincent_rivault`
+-- Base de données : `vr_portfolio_2021`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +27,16 @@ SET time_zone = "+00:00";
 -- Structure de la table `mail`
 --
 
-CREATE TABLE `mail` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `mail`;
+CREATE TABLE IF NOT EXISTS `mail` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `ville` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `sujet` varchar(50) NOT NULL,
-  `message` longtext NOT NULL
+  `message` longtext NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -43,11 +45,13 @@ CREATE TABLE `mail` (
 -- Structure de la table `page`
 --
 
-CREATE TABLE `page` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `page`;
+CREATE TABLE IF NOT EXISTS `page` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
-  `contenu` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `contenu` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `page`
@@ -68,12 +72,14 @@ INSERT INTO `page` (`id`, `titre`, `contenu`) VALUES
 -- Structure de la table `realisation`
 --
 
-CREATE TABLE `realisation` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `realisation`;
+CREATE TABLE IF NOT EXISTS `realisation` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `nomProjet` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `realisation`
@@ -84,8 +90,8 @@ INSERT INTO `realisation` (`id`, `nomProjet`, `description`, `date`) VALUES
 (2, '<h3><strong>Site de type Blog</strong></h3>\r\n', '<p>Site internet de type Blog permettant de d&eacute;finir diff&eacute;rents types d&#39;informations et de les classer par cat&eacute;gories.&nbsp;</p>\r\n\r\n<p>Ce site a &eacute;t&eacute; d&eacute;velopp&eacute; en langage PHP orient&eacute; objet en se basant sur une structure MVC.</p>\r\n\r\n<p>Il a &eacute;t&eacute; r&eacute;alis&eacute; sous forme de tableau et mis en page avec le framework Bootstrap.</p>\r\n', '2019-12-13'),
 (3, '<h3><strong>Site WordPress</strong></h3>\r\n', '<p>Site de cuisine d&eacute;velopp&eacute; avec le CMS WordPress et l&#39;extension WooCommerce.&nbsp;</p>\r\n\r\n<p>La rubrique &quot;Boutique&quot; propose diff&eacute;rents articles &agrave; la vente dont certains ont &eacute;t&eacute; param&eacute;tr&eacute;s comme des produits variables dans l&#39;extension WooCommerce (&quot;T-Shirt basique&quot;).</p>\r\n', '2020-01-10'),
 (4, '<h3><strong>Site internet de type Portfolio</strong></h3>\r\n', '<p>Site internet compos&eacute; de 4 pages principales ayant pour vocation de pr&eacute;senter mon profil professionnel, mes comp&eacute;tences de d&eacute;veloppeur WEB ainsi qu&#39;une s&eacute;lection de quelques r&eacute;alisations.&nbsp;</p>\r\n\r\n<p>Ce site a &eacute;t&eacute; d&eacute;velopp&eacute; en langage PHP orient&eacute; objet en se basant sur une structure MVC.</p>\r\n\r\n<p>Il a &eacute;t&eacute; r&eacute;alis&eacute; en langage natif except&eacute; pour les pages d&#39;administration qui ont &eacute;t&eacute; mises en forme &agrave; l&#39;aide d&#39;un tableau et mises en page avec le framework Bootstrap.</p>\r\n', '2020-06-18'),
-(5, '<h3><strong>CV en PHP conceptuel</strong></h3>\r\n', '<p>Voir mon CV r&eacute;alis&eacute; en php conceptuel dans le cadre de la licence professionnelle &quot;Logiciels Libres&quot; de l&#39;universit&eacute; d&#39;angers : <a href=\"https://vincentrivault.go.yj.fr/cv_RIVAULT/cv_index.php\" target=\"_blank\">https://vincentrivault.go.yj.fr/cv_RIVAULT/cv_index.php</a></p>\r\n', '2021-02-08'),
-(6, '<h3><strong>Application de gestion du parc zoologique de SigeanSud</strong></h3>\r\n', '<p>D&eacute;veloppement d&#39;une application en PHP Objet bas&eacute;e sur une structure MVC permettant la gestion du parc zoologique de SigeanSud.</p>\r\n\r\n<p>Ce projet a &eacute;t&eacute; r&eacute;alis&eacute; en bin&ocirc;me dans le cadre de la licence professionnelle &quot;Logiciels Libres&quot; de l&#39;Universit&eacute; d&#39;Angers.</p>\r\n\r\n<p>Cette application doit permettre de g&eacute;rer le parc autour de 4 grans th&egrave;mes :</p>\r\n\r\n<p><strong>- les animaux :</strong> rep&eacute;rer les diff&eacute;rents types d&#39;animaux et leurs esp&egrave;ces ;</p>\r\n\r\n<p><strong>- les enclos :</strong> entretenir les diff&eacute;rents types d&#39;enclos, identifier les animaux et les objets pr&eacute;sents ;</p>\r\n\r\n<p><strong>- la nourriture :</strong> d&eacute;finir diff&eacute;rents types de menus pour les animaux adapt&eacute;s &agrave; leur esp&egrave;ce ;</p>\r\n\r\n<p><strong>- le personnel :</strong> distinguer 3 types de personnel n&#39;ayant pas acc&egrave;s aux m&ecirc;mes pages de l&#39;application. Un profil avec un r&ocirc;le de <strong>&quot;soignant&quot;</strong> pour soigner et nourrir les animaux, un profil avec un r&ocirc;le de <strong>&quot;entretien&quot;</strong> pour am&eacute;nager les enclos et g&eacute;rer les objets. Enfin, un profil avec un r&ocirc;le d&#39;<strong>&quot;administrateur&quot;</strong> aura acc&egrave;s &agrave; toutes les pages, y compris le liste des diff&eacute;rents profils du personnel.</p>\r\n\r\n<p>Une <strong>authentification pr&eacute;alable</strong> est n&eacute;cessaire pour acc&eacute;der au contenu de l&#39;application.</p>\r\n\r\n<p>Pour acc&eacute;der au contenu, <strong>deux modes sont d&eacute;finis :</strong> un mode <strong>&quot;consultation&quot;</strong> pour lire le contenu des pages et un mode <strong>&quot;mise &agrave; jour&quot;</strong> pour modifier le contenu des pages selon le r&ocirc;le de chaque profil de connexion.</p>\r\n', '2021-03-26');
+(5, '<h3><strong>CV en PHP conceptuel</strong></h3>\r\n', '<p>Le PHP conceptuel permet de coder une page en PHP en faisant appel uniquement &agrave; des fonctions. Ces fonctions sont con&ccedil;ues &agrave; l&#39;avance pour &eacute;crire certaines balises au format HTML. Ainsi, en utilisant le PHP conceptuel, la page ne contient aucun script HTML, mais seulement des fonctions qui sont d&eacute;finies dans une page annexe avec leur balises HTML correspondantes.</p>\r\n\r\n<p>Voir mon CV r&eacute;alis&eacute; en PHP conceptuel dans le cadre de la licence professionnelle &quot;Logiciels Libres&quot; de l&#39;Universit&eacute; d&#39;Angers sur <a href=\"https://vincentrivault.go.yj.fr/cv_RIVAULT\" target=\"_blank\">cette page</a>.</p>\r\n', '2021-02-08'),
+(6, '<h3><strong>Application de gestion du parc zoologique de SigeanSud</strong></h3>\r\n', '<p>D&eacute;veloppement d&#39;une application en PHP Objet bas&eacute;e sur une structure MVC permettant la gestion du parc zoologique de SigeanSud.</p>\r\n\r\n<p>Ce projet a &eacute;t&eacute; r&eacute;alis&eacute; en bin&ocirc;me dans le cadre de la licence professionnelle &quot;Logiciels Libres&quot; de l&#39;Universit&eacute; d&#39;Angers.</p>\r\n\r\n<p>Cette application doit permettre de g&eacute;rer le parc autour de 4 grans th&egrave;mes :</p>\r\n\r\n<p><strong>- les animaux :</strong> rep&eacute;rer les diff&eacute;rents types d&#39;animaux et leurs esp&egrave;ces ;</p>\r\n\r\n<p><strong>- les enclos :</strong> entretenir les diff&eacute;rents types d&#39;enclos, identifier les animaux et les objets pr&eacute;sents ;</p>\r\n\r\n<p><strong>- la nourriture :</strong> d&eacute;finir diff&eacute;rents types de menus pour les animaux adapt&eacute;s &agrave; leur esp&egrave;ce ;</p>\r\n\r\n<p><strong>- le personnel :</strong> distinguer 3 types de personnel n&#39;ayant pas acc&egrave;s aux m&ecirc;mes pages de l&#39;application. Un profil avec un r&ocirc;le de <strong>&quot;soignant&quot;</strong> pour soigner et nourrir les animaux, un profil avec un r&ocirc;le de <strong>&quot;entretien&quot;</strong> pour am&eacute;nager les enclos et g&eacute;rer les objets. Enfin, un profil avec un r&ocirc;le d&#39;<strong>&quot;administrateur&quot;</strong> aura acc&egrave;s &agrave; toutes les pages, y compris le liste des diff&eacute;rents profils du personnel.</p>\r\n\r\n<p>Une <strong>authentification pr&eacute;alable</strong> est n&eacute;cessaire pour acc&eacute;der au contenu de l&#39;application.</p>\r\n\r\n<p>Pour acc&eacute;der au contenu, <strong>deux modes sont d&eacute;finis :</strong> un mode <strong>&quot;consultation&quot;</strong> pour lire le contenu des pages et un mode <strong>&quot;mise &agrave; jour&quot;</strong> pour modifier le contenu des pages selon le r&ocirc;le de chaque profil de connexion.</p>\r\n\r\n<p>Pour consulter l&#39;application, se rendre sur <a href=\"https://vincentrivault.go.yj.fr/parc_zoo_SigeanSud\" target=\"_blank\">cette page</a>.</p>\r\n', '2021-03-26');
 
 -- --------------------------------------------------------
 
@@ -93,14 +99,16 @@ INSERT INTO `realisation` (`id`, `nomProjet`, `description`, `date`) VALUES
 -- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
-  `rank` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `rank` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -109,62 +117,6 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`id`, `username`, `password`, `lastname`, `firstname`, `rank`) VALUES
 (1, 'admin', '$2y$10$K1NzmjNYrQLYNXl.yv5BH.fKLGw.fIhTnRt9xXzhfauinNp69BJ0q', 'RIVAULT', 'Vincent', 'administrateur'),
 (2, 'redac', '$2y$10$7DdoR4Ul/qN0Bv9qeNJ5u.7WypnU4nFk9jxhAue.AQyKUkVhjlvAi', 'RIVAULT', 'Vincent', 'redacteur');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `mail`
---
-ALTER TABLE `mail`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `page`
---
-ALTER TABLE `page`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `realisation`
---
-ALTER TABLE `realisation`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `mail`
---
-ALTER TABLE `mail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `page`
---
-ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT pour la table `realisation`
---
-ALTER TABLE `realisation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
